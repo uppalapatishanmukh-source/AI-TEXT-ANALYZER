@@ -64,7 +64,7 @@ analyzeButton.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/analyze",
+            "https://ai-text-analyzer-tkm3.onrender.com/analyze",
             {
                 method: "POST",
 
@@ -80,8 +80,9 @@ analyzeButton.addEventListener("click", async function () {
 
 
         const data = await response.json();
-       const aiResponse = await fetch(
-    "http://127.0.0.1:8000/ai-test",
+    const aiResponse = await fetch(
+
+    "https://ai-text-analyzer-tkm3.onrender.com/ai-test",
     {
         method: "POST",
 
