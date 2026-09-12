@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Text Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            AI Text Analyzer
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#features">Features</a>
+        </nav>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-badge">
+            ✨ Intelligent Text Analysis
+        </div>
+
+        <h1>
+            Understand your text.
+            <br>
+            <span>Improve it with AI.</span>
+        </h1>
+
+        <p>
+            Analyze, understand and improve your writing with
+            powerful AI-powered text tools.
+        </p>
+
+    </section>
+
+
+    <!-- ANALYZER -->
+
+    <section class="analyzer-container" id="analyzer">
+
+        <!-- TEXT INPUT -->
+
+        <div class="editor-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Text Analyzer</h2>
+                    <p>Paste or type your text below</p>
+                </div>
+
+                <button id="clearButton" class="clear-btn">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="textInput"
+                placeholder="Start writing or paste your text here..."
+            ></textarea>
+
+
+            <div class="editor-footer">
+
+                <span id="liveWordCount">
+                    0 words
+                </span>
+
+                <span>
+                    Maximum text supported: Large
+                </span>
+
+            </div>
+
+
+            <button id="analyzeButton" class="analyze-btn">
+
+                <span>✦</span>
+
+                Analyze Text
+
+                <span>→</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div class="results-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Analysis</h2>
+                    <p>Your text statistics</p>
+                </div>
+
+                <div class="status">
+                    ● Ready
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+
+                <!-- WORDS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div>
+                        <p>Words</p>
+
+                        <h3 id="wordCount">
+                            0
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <!-- CHARACTERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        Aa
+                    </div>
+
+                    <div>
+                        <p>Characters</p>
+
+                        <h3 id="characterCount">
+                            0
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <!-- SENTENCES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ≡
+                    </div>
+
+                    <div>
+                        <p>Sentences</p>
+
+                        <h3 id="sentenceCount">
+                            0
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <!-- READING TIME -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏱
+                    </div>
+
+                    <div>
+                        <p>Reading Time</p>
+
+                        <h3 id="readingTime">
+                            0 min
+                        </h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="score-section">
+
+                <div class="score-header">
+
+                    <span>
+                        Writing Quality
+                    </span>
+
+                    <strong id="qualityScore">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        id="qualityProgress"
+                        class="progress"
+                    ></div>
+
+                </div>
+
+                <p>
+                    Add some text to calculate your writing quality.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI TOOLS -->
+
+    <section class="features" id="features">
+
+        <div class="section-heading">
+
+            <div class="hero-badge">
+                ✨ AI TOOLS
+            </div>
+
+            <h2>
+                Improve your writing
+            </h2>
+
+            <p>
+                More powerful AI features are coming soon.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Improve Text
+                </h3>
+
+                <p>
+                    Make your writing clearer, stronger and more professional.
+                </p>
+
+                <button>
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📄
+                </div>
+
+                <h3>
+                    Summarize
+                </h3>
+
+                <p>
+                    Turn long text into a short and useful summary.
+                </p>
+
+                <button>
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Grammar Fix
+                </h3>
+
+                <p>
+                    Find grammar problems and improve your sentences.
+                </p>
+
+                <button>
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💡
+                </div>
+
+                <h3>
+                    AI Suggestions
+                </h3>
+
+                <p>
+                    Get intelligent suggestions to make your text better.
+                </p>
+
+                <button>
+                    Coming Soon
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- AI RESULT -->
+<section class="ai-result-section">
+
+    <h2>🤖 AI Analysis</h2>
+
+    <div id="aiResult">
+        Your AI analysis will appear here.
+    </div>
+
+</section>
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ✦ AI Text Analyzer
+        </div>
+
+        <p>
+            Built with Python, AI and modern web technologies.
+        </p>
+
+        <p class="copyright">
+            © 2026 AI Text Analyzer
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
