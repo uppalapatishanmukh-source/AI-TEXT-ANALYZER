@@ -1,13 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -19,12 +11,6 @@ import re
 load_dotenv()
 
 
-# Create OpenAI client
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
-
 # Create FastAPI app
 app = FastAPI()
 
@@ -32,10 +18,20 @@ app = FastAPI()
 # Allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
+    allow_origins=[
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+        "https://ai-text-analyzer-frontend.onrender.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
+
+
+# Create OpenAI client
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 
