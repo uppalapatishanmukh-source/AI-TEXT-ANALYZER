@@ -64,7 +64,7 @@ analyzeButton.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "https://ai-text-analyzer-tkm3.onrender.com/analyze",
+            "https://ai-text-analyzer-backend.onrender.com/analyze",
             {
                 method: "POST",
 
@@ -81,8 +81,7 @@ analyzeButton.addEventListener("click", async function () {
 
         const data = await response.json();
     const aiResponse = await fetch(
-
-    "https://ai-text-analyzer-tkm3.onrender.com/ai-test",
+    "https://ai-text-analyzer-backend.onrender.com/ai-test",
     {
         method: "POST",
 
