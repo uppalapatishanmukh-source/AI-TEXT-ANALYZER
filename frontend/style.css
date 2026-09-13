@@ -1,6 +1,8 @@
-/* =====================================
-   RESET
-===================================== */
+/* =========================================
+   AI TEXT ANALYZER — WOW UI
+   ========================================= */
+
+/* ---------- RESET ---------- */
 
 * {
     margin: 0;
@@ -8,200 +10,226 @@
     box-sizing: border-box;
 }
 
-
-/* =====================================
-   BODY
-===================================== */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-
     background:
-        radial-gradient(
-            circle at top,
-            #172554 0%,
-            #0f172a 35%,
-            #020617 75%
-        );
-
+        radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.15), transparent 30%),
+        linear-gradient(135deg, #020617, #0f172a 45%, #020617);
     color: #f8fafc;
-
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 
-/* =====================================
-   NAVBAR
-===================================== */
+/* ---------- NAVBAR ---------- */
 
 .navbar {
     height: 75px;
-
     padding: 0 7%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-
-    background: rgba(2,6,23,0.7);
-
-    backdrop-filter: blur(15px);
-
     position: sticky;
-
     top: 0;
-
     z-index: 100;
-}
 
+    background: rgba(2, 6, 23, 0.72);
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
 
 .logo {
-    font-size: 20px;
-
-    font-weight: 700;
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-}
 
+    font-size: 20px;
+    font-weight: 700;
+}
 
 .logo-icon {
-    width: 35px;
-
-    height: 35px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
-    background: #2563eb;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
 
     color: white;
-
     font-size: 20px;
-}
 
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
 
 .navbar nav {
     display: flex;
-
     gap: 35px;
 }
 
-
 .navbar nav a {
-    color: #cbd5e1;
-
+    color: #94a3b8;
     text-decoration: none;
-
     font-size: 14px;
 
     transition: 0.3s;
 }
 
-
 .navbar nav a:hover {
-    color: white;
+    color: #ffffff;
 }
-
 
 .login-btn {
     padding: 9px 18px;
 
-    border-radius: 8px;
+    border-radius: 9px;
 
-    border: 1px solid #334155;
+    border: 1px solid rgba(148, 163, 184, 0.2);
 
-    background: #111827;
+    background: rgba(15, 23, 42, 0.8);
 
     color: white;
 
     cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    border-color: #3b82f6;
+    background: rgba(37, 99, 235, 0.15);
 }
 
 
-/* =====================================
-   HERO
-===================================== */
+/* ---------- HERO ---------- */
 
 .hero {
     text-align: center;
 
-    padding: 100px 20px 60px;
+    padding: 115px 20px 75px;
 
-    max-width: 900px;
+    max-width: 950px;
 
     margin: auto;
+
+    position: relative;
 }
 
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    background: rgba(59, 130, 246, 0.12);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    top: 50px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: -1;
+}
 
 .hero-badge {
     display: inline-block;
 
-    padding: 8px 15px;
+    padding: 9px 17px;
 
     border-radius: 30px;
 
-    background: rgba(37,99,235,0.15);
+    background: rgba(59, 130, 246, 0.1);
 
-    border: 1px solid rgba(96,165,250,0.25);
+    border: 1px solid rgba(96, 165, 250, 0.25);
 
     color: #93c5fd;
 
     font-size: 13px;
 
-    margin-bottom: 22px;
-}
+    margin-bottom: 24px;
 
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+}
 
 .hero h1 {
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(42px, 7vw, 78px);
 
-    line-height: 1.05;
+    line-height: 1.03;
 
-    letter-spacing: -2px;
+    letter-spacing: -3px;
+
+    font-weight: 800;
 }
-
 
 .hero h1 span {
-    color: #60a5fa;
+    background: linear-gradient(
+        90deg,
+        #60a5fa,
+        #a78bfa,
+        #60a5fa
+    );
+
+    background-size: 200%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: gradientMove 4s ease infinite;
 }
 
+@keyframes gradientMove {
+    0% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
+}
 
 .hero p {
     max-width: 650px;
 
-    margin: 25px auto 0;
+    margin: 27px auto 0;
 
     color: #94a3b8;
 
     font-size: 18px;
 
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 
-/* =====================================
-   ANALYZER
-===================================== */
+/* ---------- ANALYZER ---------- */
 
 .analyzer-container {
     width: 88%;
-
     max-width: 1200px;
 
-    margin: 30px auto 100px;
+    margin: 30px auto 110px;
 
     display: grid;
 
@@ -211,26 +239,45 @@ body {
 }
 
 
-/* =====================================
-   CARDS
-===================================== */
+/* ---------- MAIN CARDS ---------- */
 
 .editor-card,
 .results-card {
-    background: rgba(15,23,42,0.8);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.9),
+            rgba(15, 23, 42, 0.68)
+        );
 
-    border: 1px solid rgba(148,163,184,0.12);
+    border: 1px solid rgba(148, 163, 184, 0.14);
 
-    border-radius: 20px;
+    border-radius: 22px;
 
-    padding: 25px;
+    padding: 26px;
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.25);
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px rgba(255, 255, 255, 0.03);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+
+    transition: 0.35s;
 }
 
+.editor-card:hover,
+.results-card:hover {
+    border-color: rgba(96, 165, 250, 0.3);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(59, 130, 246, 0.06);
+}
+
+
+/* ---------- CARD HEADER ---------- */
 
 .card-header {
     display: flex;
@@ -242,13 +289,11 @@ body {
     margin-bottom: 20px;
 }
 
-
 .card-header h2 {
     font-size: 19px;
 
     margin-bottom: 5px;
 }
-
 
 .card-header p {
     color: #64748b;
@@ -257,9 +302,7 @@ body {
 }
 
 
-/* =====================================
-   TEXTAREA
-===================================== */
+/* ---------- TEXTAREA ---------- */
 
 textarea {
     width: 100%;
@@ -270,11 +313,16 @@ textarea {
 
     padding: 20px;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    border: 1px solid #334155;
+    border: 1px solid #263449;
 
-    background: #020617;
+    background:
+        linear-gradient(
+            145deg,
+            #020617,
+            #07101f
+        );
 
     color: #e2e8f0;
 
@@ -283,24 +331,24 @@ textarea {
     line-height: 1.7;
 
     outline: none;
-}
 
+    transition: 0.3s;
+}
 
 textarea::placeholder {
     color: #475569;
 }
 
-
 textarea:focus {
     border-color: #3b82f6;
 
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.08),
+        0 0 35px rgba(59, 130, 246, 0.08);
 }
 
 
-/* =====================================
-   EDITOR FOOTER
-===================================== */
+/* ---------- EDITOR FOOTER ---------- */
 
 .editor-footer {
     display: flex;
@@ -314,7 +362,6 @@ textarea:focus {
     margin-top: 12px;
 }
 
-
 .clear-btn {
     background: transparent;
 
@@ -323,17 +370,16 @@ textarea:focus {
     color: #94a3b8;
 
     cursor: pointer;
-}
 
+    transition: 0.3s;
+}
 
 .clear-btn:hover {
     color: #f87171;
 }
 
 
-/* =====================================
-   ANALYZE BUTTON
-===================================== */
+/* ---------- ANALYZE BUTTON ---------- */
 
 .analyze-btn {
     width: 100%;
@@ -344,9 +390,14 @@ textarea:focus {
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
-    background: #2563eb;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
 
     color: white;
 
@@ -365,38 +416,41 @@ textarea:focus {
     gap: 10px;
 
     transition: 0.3s;
-}
 
+    box-shadow:
+        0 10px 30px rgba(37, 99, 235, 0.22);
+}
 
 .analyze-btn:hover {
-    background: #3b82f6;
+    transform: translateY(-3px);
 
-    transform: translateY(-2px);
+    box-shadow:
+        0 15px 40px rgba(59, 130, 246, 0.35);
+}
 
-    box-shadow: 0 10px 30px rgba(37,99,235,0.25);
+.analyze-btn:active {
+    transform: translateY(0);
 }
 
 
-/* =====================================
-   STATUS
-===================================== */
+/* ---------- STATUS ---------- */
 
 .status {
     color: #4ade80;
 
     font-size: 12px;
 
-    background: rgba(34,197,94,0.08);
+    background: rgba(34, 197, 94, 0.08);
 
-    padding: 7px 10px;
+    padding: 7px 11px;
 
     border-radius: 20px;
+
+    border: 1px solid rgba(74, 222, 128, 0.12);
 }
 
 
-/* =====================================
-   STAT GRID
-===================================== */
+/* ---------- STATISTICS ---------- */
 
 .stats-grid {
     display: grid;
@@ -406,44 +460,61 @@ textarea:focus {
     gap: 14px;
 }
 
-
 .stat-card {
-    background: #0b1220;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 18, 32, 0.95),
+            rgba(15, 23, 42, 0.75)
+        );
 
     border: 1px solid #1e293b;
 
     padding: 18px;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
     display: flex;
 
     align-items: center;
 
     gap: 14px;
+
+    transition: 0.3s;
 }
 
+.stat-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(59, 130, 246, 0.35);
+
+    background: rgba(15, 23, 42, 0.95);
+}
 
 .stat-icon {
     width: 45px;
-
     height: 45px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    background: #172554;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.25),
+            rgba(124, 58, 237, 0.2)
+        );
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     font-size: 20px;
 
     color: #60a5fa;
-}
 
+    border: 1px solid rgba(96, 165, 250, 0.1);
+}
 
 .stat-card p {
     color: #64748b;
@@ -453,28 +524,29 @@ textarea:focus {
     margin-bottom: 5px;
 }
 
-
 .stat-card h3 {
     font-size: 24px;
 }
 
 
-/* =====================================
-   QUALITY SCORE
-===================================== */
+/* ---------- QUALITY SCORE ---------- */
 
 .score-section {
     margin-top: 25px;
 
     padding: 20px;
 
-    background: #0b1220;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 18, 32, 0.95),
+            rgba(15, 23, 42, 0.75)
+        );
 
-    border-radius: 14px;
+    border-radius: 15px;
 
     border: 1px solid #1e293b;
 }
-
 
 .score-header {
     display: flex;
@@ -484,21 +556,20 @@ textarea:focus {
     margin-bottom: 12px;
 }
 
-
 .score-header span {
     color: #94a3b8;
 
     font-size: 13px;
 }
 
-
 .score-header strong {
     color: #60a5fa;
+
+    font-size: 18px;
 }
 
-
 .progress-bar {
-    height: 8px;
+    height: 9px;
 
     background: #1e293b;
 
@@ -507,17 +578,25 @@ textarea:focus {
     overflow: hidden;
 }
 
-
 .progress {
     width: 0%;
 
     height: 100%;
 
-    background: #3b82f6;
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #8b5cf6
+        );
 
-    transition: width 0.5s;
+    border-radius: 20px;
+
+    transition: width 0.7s ease;
+
+    box-shadow:
+        0 0 15px rgba(59, 130, 246, 0.35);
 }
-
 
 .score-section > p {
     margin-top: 10px;
@@ -528,9 +607,58 @@ textarea:focus {
 }
 
 
-/* =====================================
-   FEATURES
-===================================== */
+/* ---------- AI RESULT ---------- */
+
+.ai-result-section {
+    width: 88%;
+
+    max-width: 1200px;
+
+    margin: 0 auto 110px;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.9),
+            rgba(30, 41, 59, 0.7)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.2);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+.ai-result-section h2 {
+    margin-bottom: 18px;
+
+    font-size: 22px;
+}
+
+#aiResult {
+    min-height: 100px;
+
+    padding: 22px;
+
+    border-radius: 15px;
+
+    background: rgba(2, 6, 23, 0.65);
+
+    border: 1px solid #1e293b;
+
+    color: #cbd5e1;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+}
+
+
+/* ---------- FEATURES ---------- */
 
 .features {
     width: 88%;
@@ -539,9 +667,8 @@ textarea:focus {
 
     margin: auto;
 
-    padding-bottom: 100px;
+    padding-bottom: 110px;
 }
-
 
 .section-heading {
     text-align: center;
@@ -549,18 +676,15 @@ textarea:focus {
     margin-bottom: 45px;
 }
 
-
 .section-heading h2 {
     font-size: 38px;
 
     margin-bottom: 12px;
 }
 
-
 .section-heading p {
     color: #64748b;
 }
-
 
 .feature-grid {
     display: grid;
@@ -571,38 +695,41 @@ textarea:focus {
     gap: 18px;
 }
 
-
 .feature-card {
-    padding: 25px;
+    padding: 27px;
 
-    background: rgba(15,23,42,0.8);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.88),
+            rgba(15, 23, 42, 0.65)
+        );
 
     border: 1px solid #1e293b;
 
     border-radius: 18px;
 
-    transition: 0.3s;
+    transition: 0.35s;
 }
-
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 
     border-color: #3b82f6;
+
+    box-shadow:
+        0 20px 50px rgba(37, 99, 235, 0.12);
 }
 
-
 .feature-icon {
-    font-size: 28px;
+    font-size: 30px;
 
     margin-bottom: 18px;
 }
 
-
 .feature-card h3 {
     margin-bottom: 10px;
 }
-
 
 .feature-card p {
     color: #64748b;
@@ -613,7 +740,6 @@ textarea:focus {
 
     margin-bottom: 20px;
 }
-
 
 .feature-card button {
     background: #172033;
@@ -630,20 +756,19 @@ textarea:focus {
 }
 
 
-/* =====================================
-   FOOTER
-===================================== */
+/* ---------- FOOTER ---------- */
 
 footer {
     text-align: center;
 
-    padding: 50px 20px;
+    padding: 55px 20px;
 
     border-top: 1px solid #1e293b;
 
     color: #64748b;
-}
 
+    background: rgba(2, 6, 23, 0.4);
+}
 
 .footer-logo {
     color: white;
@@ -653,22 +778,18 @@ footer {
     margin-bottom: 10px;
 }
 
-
 footer p {
     font-size: 13px;
 
     margin: 5px;
 }
 
-
 .copyright {
     margin-top: 20px !important;
 }
 
 
-/* =====================================
-   MOBILE
-===================================== */
+/* ---------- MOBILE ---------- */
 
 @media (max-width: 900px) {
 
@@ -676,43 +797,128 @@ footer p {
         display: none;
     }
 
-
     .analyzer-container {
         grid-template-columns: 1fr;
     }
 
-
     .feature-grid {
         grid-template-columns: 1fr 1fr;
     }
-
 }
 
 
 @media (max-width: 600px) {
 
-    .hero {
-        padding-top: 70px;
+    .navbar {
+        padding: 0 5%;
     }
 
+    .logo {
+        font-size: 17px;
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .login-btn {
+        padding: 8px 13px;
+    }
+
+    .hero {
+        padding-top: 75px;
+        padding-bottom: 55px;
+    }
 
     .hero h1 {
         font-size: 42px;
+
+        letter-spacing: -2px;
     }
 
-
-    .feature-grid {
-        grid-template-columns: 1fr;
+    .hero p {
+        font-size: 16px;
     }
-
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
 
     .analyzer-container {
         width: 94%;
     }
 
+    .editor-card,
+    .results-card {
+        padding: 20px;
+    }
+
+    textarea {
+        height: 300px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        width: 94%;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .ai-result-section {
+        width: 94%;
+        padding: 20px;
+    }
+
+    .editor-footer {
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+/* =====================================
+   AI RESULT HEADER
+===================================== */
+
+.ai-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.ai-result-header h2 {
+    margin-bottom: 0;
+}
+
+
+/* =====================================
+   COPY BUTTON
+===================================== */
+
+.copy-btn {
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    background: rgba(37, 99, 235, 0.12);
+    color: #93c5fd;
+    padding: 8px 13px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(37, 99, 235, 0.22);
+    border-color: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.copy-btn:active {
+    transform: scale(0.96);
 }

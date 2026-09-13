@@ -6,16 +6,14 @@ from openai import OpenAI
 import os
 import re
 
-
-# Load environment variables
 load_dotenv()
 
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
-# Create FastAPI app
 app = FastAPI()
 
-
-# Allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -29,18 +27,10 @@ app.add_middleware(
 )
 
 
-# Create OpenAI client
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
-
-# Request format
 class TextRequest(BaseModel):
     text: str
 
 
-# Home
 @app.get("/")
 def home():
     return {
@@ -48,13 +38,17 @@ def home():
     }
 
 
-# Analyze text
+# =====================================
+# TEXT ANALYSIS
+# =====================================
+
 @app.post("/analyze")
 def analyze_text(data: TextRequest):
 
     text = data.text.strip()
 
     words = text.split()
+
     total_words = len(words)
 
     total_characters = len(text)
@@ -62,8 +56,7 @@ def analyze_text(data: TextRequest):
     sentences = re.split(r"[.!?]+", text)
 
     sentences = [
-        sentence
-        for sentence in sentences
+        sentence for sentence in sentences
         if sentence.strip()
     ]
 
@@ -85,17 +78,47 @@ def analyze_text(data: TextRequest):
     }
 
 
-# AI test
+# =====================================
+# AI ANALYSIS
+# =====================================
+
 @app.post("/ai-test")
 def ai_test(data: TextRequest):
 
+    prompt = f"""
+You are an expert AI writing assistant.
+
+Analyze the following text:
+
+--- TEXT START ---
+{data.text}
+--- TEXT END ---
+
+Give the user a useful and concise analysis.
+
+Use exactly this structure:
+
+SUMMARY:
+Give a short summary of the text.
+
+KEY POINTS:
+- Give 3 important points.
+
+TONE:
+Identify the overall tone.
+
+SUGGESTIONS:
+- Give 2 useful suggestions to improve the writing.
+
+IMPROVED VERSION:
+Rewrite the text to make it clearer, more professional, and natural.
+
+Keep the response easy to read.
+"""
+
     response = client.responses.create(
         model="gpt-5.6-luna",
-        input=f"""
-Analyze this text and give a short summary:
-
-{data.text}
-"""
+        input=prompt
     )
 
     return {

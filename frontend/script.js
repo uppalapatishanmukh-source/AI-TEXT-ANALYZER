@@ -3,25 +3,22 @@
 // =====================================
 
 const textInput = document.getElementById("textInput");
-
 const analyzeButton = document.getElementById("analyzeButton");
-
 const clearButton = document.getElementById("clearButton");
 
 const liveWordCount = document.getElementById("liveWordCount");
 
 const wordCount = document.getElementById("wordCount");
-
 const characterCount = document.getElementById("characterCount");
-
 const sentenceCount = document.getElementById("sentenceCount");
-
 const readingTime = document.getElementById("readingTime");
 
 const qualityScore = document.getElementById("qualityScore");
-
 const qualityProgress = document.getElementById("qualityProgress");
+
 const aiResult = document.getElementById("aiResult");
+const copyButton = document.getElementById("copyButton");
+
 
 // =====================================
 // LIVE WORD COUNTER
@@ -61,7 +58,33 @@ analyzeButton.addEventListener("click", async function () {
         return;
     }
 
+
+    // =====================================
+    // SHOW AI PROCESSING STATE
+    // =====================================
+
+    analyzeButton.disabled = true;
+
+    analyzeButton.textContent = "🤖 Analyzing...";
+
+    aiResult.innerHTML = `
+        <div class="ai-loading">
+
+            <div class="loading-spinner"></div>
+
+            <p>AI is analyzing your text...</p>
+
+            <span>Generating insights...</span>
+
+        </div>
+    `;
+
+
     try {
+
+        // =====================================
+        // SEND TEXT TO PYTHON ANALYZER
+        // =====================================
 
         const response = await fetch(
             "https://ai-text-analyzer-backend.onrender.com/analyze",
@@ -80,28 +103,41 @@ analyzeButton.addEventListener("click", async function () {
 
 
         const data = await response.json();
-    const aiResponse = await fetch(
-    "https://ai-text-analyzer-backend.onrender.com/ai-test",
-    {
-        method: "POST",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
 
-        body: JSON.stringify({
-            text: text
-        })
-    }
-);
+        // =====================================
+        // SEND TEXT TO AI
+        // =====================================
 
-const aiData = await aiResponse.json();
+        const aiResponse = await fetch(
+            "https://ai-text-analyzer-backend.onrender.com/ai-test",
+            {
+                method: "POST",
 
-aiResult.textContent = aiData.result;
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-        // =================================
-        // DISPLAY RESULTS FROM PYTHON
-        // =================================
+                body: JSON.stringify({
+                    text: text
+                })
+            }
+        );
+
+
+        const aiData = await aiResponse.json();
+
+
+        // =====================================
+        // DISPLAY AI RESULT
+        // =====================================
+
+        aiResult.textContent = aiData.result;
+
+
+        // =====================================
+        // DISPLAY PYTHON RESULTS
+        // =====================================
 
         wordCount.textContent =
             data.words;
@@ -116,9 +152,9 @@ aiResult.textContent = aiData.result;
             data.reading_time + " min";
 
 
-        // =================================
+        // =====================================
         // SIMPLE QUALITY SCORE
-        // =================================
+        // =====================================
 
         let score = 50;
 
@@ -161,6 +197,10 @@ aiResult.textContent = aiData.result;
         score = Math.min(score, 100);
 
 
+        // =====================================
+        // DISPLAY QUALITY SCORE
+        // =====================================
+
         qualityScore.textContent =
             score + "%";
 
@@ -172,9 +212,23 @@ aiResult.textContent = aiData.result;
 
         console.error(error);
 
+        aiResult.textContent =
+            "Unable to analyze the text right now.";
+
         alert(
             "Could not connect to the Python backend."
         );
+
+    } finally {
+
+        // =====================================
+        // RESTORE ANALYZE BUTTON
+        // =====================================
+
+        analyzeButton.disabled = false;
+
+        analyzeButton.textContent =
+            "Analyze Text";
 
     }
 
@@ -209,5 +263,64 @@ clearButton.addEventListener("click", function () {
 
     qualityProgress.style.width =
         "0%";
+
+
+    // Clear AI result too
+
+    aiResult.textContent =
+        "Your AI analysis will appear here.";
+
+});
+
+
+// =====================================
+// COPY AI RESULT
+// =====================================
+
+copyButton.addEventListener("click", async function () {
+
+    const result =
+        aiResult.textContent.trim();
+
+
+    if (
+        result === "" ||
+        result === "Your AI analysis will appear here."
+    ) {
+
+        alert(
+            "There is no AI result to copy yet."
+        );
+
+        return;
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(result);
+
+
+        copyButton.textContent =
+            "✅ Copied!";
+
+
+        setTimeout(function () {
+
+            copyButton.textContent =
+                "📋 Copy";
+
+        }, 2000);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not copy the AI result."
+        );
+
+    }
 
 });
