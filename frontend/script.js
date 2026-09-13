@@ -132,7 +132,7 @@ analyzeButton.addEventListener("click", async function () {
         // DISPLAY AI RESULT
         // =====================================
 
-        aiResult.textContent = aiData.result;
+        aiResult.innerHTML = formatAIResult(aiData.result);
 
 
         // =====================================
@@ -324,3 +324,92 @@ copyButton.addEventListener("click", async function () {
     }
 
 });
+// =====================================
+// FORMAT AI RESULT INTO CARDS
+// =====================================
+
+function formatAIResult(result) {
+
+    const summaryMatch = result.match(
+        /SUMMARY:\s*([\s\S]*?)(?=KEY POINTS:|TONE:|SUGGESTIONS:|IMPROVED VERSION:|$)/i
+    );
+
+    const keyPointsMatch = result.match(
+        /KEY POINTS:\s*([\s\S]*?)(?=TONE:|SUGGESTIONS:|IMPROVED VERSION:|$)/i
+    );
+
+    const toneMatch = result.match(
+        /TONE:\s*([\s\S]*?)(?=SUGGESTIONS:|IMPROVED VERSION:|$)/i
+    );
+
+    const suggestionsMatch = result.match(
+        /SUGGESTIONS:\s*([\s\S]*?)(?=IMPROVED VERSION:|$)/i
+    );
+
+    const improvedMatch = result.match(
+        /IMPROVED VERSION:\s*([\s\S]*)/i
+    );
+
+
+    const summary = summaryMatch
+        ? summaryMatch[1].trim()
+        : "";
+
+    const keyPoints = keyPointsMatch
+        ? keyPointsMatch[1].trim()
+        : "";
+
+    const tone = toneMatch
+        ? toneMatch[1].trim()
+        : "";
+
+    const suggestions = suggestionsMatch
+        ? suggestionsMatch[1].trim()
+        : "";
+
+    const improved = improvedMatch
+        ? improvedMatch[1].trim()
+        : "";
+
+
+    return `
+        <div class="ai-card summary-card">
+            <div class="ai-card-title">
+                📝 <span>Summary</span>
+            </div>
+            <p>${summary}</p>
+        </div>
+
+
+        <div class="ai-card">
+            <div class="ai-card-title">
+                🔑 <span>Key Points</span>
+            </div>
+            <p>${keyPoints}</p>
+        </div>
+
+
+        <div class="ai-card">
+            <div class="ai-card-title">
+                🎭 <span>Tone</span>
+            </div>
+            <p>${tone}</p>
+        </div>
+
+
+        <div class="ai-card">
+            <div class="ai-card-title">
+                💡 <span>Suggestions</span>
+            </div>
+            <p>${suggestions}</p>
+        </div>
+
+
+        <div class="ai-card improved-card">
+            <div class="ai-card-title">
+                ✨ <span>Improved Version</span>
+            </div>
+            <p>${improved}</p>
+        </div>
+    `;
+}
