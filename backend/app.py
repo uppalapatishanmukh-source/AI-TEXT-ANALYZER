@@ -124,3 +124,35 @@ Keep the response easy to read.
     return {
         "result": response.output_text
     }
+# =====================================
+# IMPROVE TEXT
+# =====================================
+
+@app.post("/improve")
+def improve_text(data: TextRequest):
+
+    prompt = f"""
+You are an expert writing assistant.
+
+Improve the following text while keeping its original meaning.
+
+TEXT:
+{data.text}
+
+Make it:
+- Clear
+- Natural
+- Professional
+- Grammatically correct
+
+Return only the improved version.
+"""
+
+    response = client.responses.create(
+        model="gpt-5.6-luna",
+        input=prompt
+    )
+
+    return {
+        "result": response.output_text
+    }
