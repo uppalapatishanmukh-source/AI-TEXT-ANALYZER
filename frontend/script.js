@@ -413,3 +413,96 @@ function formatAIResult(result) {
         </div>
     `;
 }
+// =====================================
+// IMPROVE TEXT
+// =====================================
+
+const improveButton =
+    document.getElementById("improveButton");
+
+
+improveButton.addEventListener("click", async function () {
+
+    const text = textInput.value.trim();
+
+    if (text === "") {
+
+        alert("Please enter some text first.");
+
+        return;
+    }
+
+
+    improveButton.disabled = true;
+
+    improveButton.textContent = "✨ Improving...";
+
+
+    aiResult.innerHTML = `
+        <div class="ai-loading">
+
+            <div class="loading-spinner"></div>
+
+            <p>AI is improving your text...</p>
+
+            <span>Please wait...</span>
+
+        </div>
+    `;
+
+
+    try {
+
+        const response = await fetch(
+            "https://ai-text-analyzer-backend.onrender.com/improve",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    text: text
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        aiResult.innerHTML = `
+            <div class="ai-card improved-card">
+
+                <div class="ai-card-title">
+                    ✨ <span>Improved Text</span>
+                </div>
+
+                <p>${data.result}</p>
+
+            </div>
+        `;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        aiResult.textContent =
+            "Unable to improve the text right now.";
+
+        alert(
+            "Could not connect to the Python backend."
+        );
+
+    } finally {
+
+        improveButton.disabled = false;
+
+        improveButton.textContent =
+            "Improve Text";
+
+    }
+
+});

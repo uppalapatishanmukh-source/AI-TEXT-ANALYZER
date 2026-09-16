@@ -110,136 +110,171 @@
         </div>
 
 
-        <!-- RESULTS -->
-<section class="ai-result-section">
+        <!-- AI RESULTS -->
 
-    <div class="ai-result-header">
-        <h2>🤖 AI Analysis</h2>
+        <section class="ai-result-section">
 
-        <button id="copyButton" class="copy-btn">
-            📋 Copy
-        </button>
-    </div>
+            <div class="ai-result-header">
 
-    <div id="aiResult">
+                <h2>🤖 AI Analysis</h2>
 
-        <div class="ai-empty">
-            <div class="ai-empty-icon">✨</div>
-            <h3>Your AI insights will appear here</h3>
-            <p>Analyze your text to get a summary, key points, tone, suggestions, and an improved version.</p>
+                <button id="copyButton" class="copy-btn">
+                    📋 Copy
+                </button>
+
+            </div>
+
+            <div id="aiResult">
+
+                <div class="ai-empty">
+
+                    <div class="ai-empty-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        Your AI insights will appear here
+                    </h3>
+
+                    <p>
+                        Analyze your text to get a summary,
+                        key points, tone, suggestions,
+                        and an improved version.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats-container">
+
+            <!-- WORDS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📝
+                </div>
+
+                <div>
+
+                    <p>
+                        Words
+                    </p>
+
+                    <h3 id="wordCount">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHARACTERS -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    Aa
+                </div>
+
+                <div>
+
+                    <p>
+                        Characters
+                    </p>
+
+                    <h3 id="characterCount">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- SENTENCES -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ≡
+                </div>
+
+                <div>
+
+                    <p>
+                        Sentences
+                    </p>
+
+                    <h3 id="sentenceCount">
+                        0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- READING TIME -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏱
+                </div>
+
+                <div>
+
+                    <p>
+                        Reading Time
+                    </p>
+
+                    <h3 id="readingTime">
+                        0 min
+                    </h3>
+
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
 
-</section>
-                <!-- WORDS -->
+        <!-- SCORE -->
 
-                <div class="stat-card">
+        <div class="score-section">
 
-                    <div class="stat-icon">
-                        📝
-                    </div>
+            <div class="score-header">
 
-                    <div>
-                        <p>Words</p>
+                <span>
+                    Writing Quality
+                </span>
 
-                        <h3 id="wordCount">
-                            0
-                        </h3>
-                    </div>
-
-                </div>
-
-
-                <!-- CHARACTERS -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        Aa
-                    </div>
-
-                    <div>
-                        <p>Characters</p>
-
-                        <h3 id="characterCount">
-                            0
-                        </h3>
-                    </div>
-
-                </div>
-
-
-                <!-- SENTENCES -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ≡
-                    </div>
-
-                    <div>
-                        <p>Sentences</p>
-
-                        <h3 id="sentenceCount">
-                            0
-                        </h3>
-                    </div>
-
-                </div>
-
-
-                <!-- READING TIME -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ⏱
-                    </div>
-
-                    <div>
-                        <p>Reading Time</p>
-
-                        <h3 id="readingTime">
-                            0 min
-                        </h3>
-                    </div>
-
-                </div>
+                <strong id="qualityScore">
+                    0%
+                </strong>
 
             </div>
 
+            <div class="progress-bar">
 
-            <!-- SCORE -->
-
-            <div class="score-section">
-
-                <div class="score-header">
-
-                    <span>
-                        Writing Quality
-                    </span>
-
-                    <strong id="qualityScore">
-                        0%
-                    </strong>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div
-                        id="qualityProgress"
-                        class="progress"
-                    ></div>
-
-                </div>
-
-                <p>
-                    Add some text to calculate your writing quality.
-                </p>
+                <div
+                    id="qualityProgress"
+                    class="progress"
+                ></div>
 
             </div>
+
+            <p>
+                Add some text to calculate your writing quality.
+            </p>
 
         </div>
 
@@ -261,7 +296,7 @@
             </h2>
 
             <p>
-                More powerful AI features are coming soon.
+                Powerful AI tools to improve your writing.
             </p>
 
         </div>
@@ -269,6 +304,8 @@
 
         <div class="feature-grid">
 
+
+            <!-- IMPROVE TEXT -->
 
             <div class="feature-card">
 
@@ -284,12 +321,14 @@
                     Make your writing clearer, stronger and more professional.
                 </p>
 
-                <button>
-                    Coming Soon
+                <button id="improveButton">
+                    Improve Text
                 </button>
 
             </div>
 
+
+            <!-- SUMMARIZE -->
 
             <div class="feature-card">
 
@@ -305,12 +344,14 @@
                     Turn long text into a short and useful summary.
                 </p>
 
-                <button>
-                    Coming Soon
+                <button id="summarizeButton">
+                    Summarize
                 </button>
 
             </div>
 
+
+            <!-- GRAMMAR FIX -->
 
             <div class="feature-card">
 
@@ -326,12 +367,14 @@
                     Find grammar problems and improve your sentences.
                 </p>
 
-                <button>
-                    Coming Soon
+                <button id="grammarButton">
+                    Fix Grammar
                 </button>
 
             </div>
 
+
+            <!-- AI SUGGESTIONS -->
 
             <div class="feature-card">
 
@@ -347,8 +390,8 @@
                     Get intelligent suggestions to make your text better.
                 </p>
 
-                <button>
-                    Coming Soon
+                <button id="suggestionsButton">
+                    Get Suggestions
                 </button>
 
             </div>
@@ -357,16 +400,7 @@
 
     </section>
 
-<!-- AI RESULT -->
-<section class="ai-result-section">
 
-    <h2>🤖 AI Analysis</h2>
-
-    <div id="aiResult">
-        Your AI analysis will appear here.
-    </div>
-
-</section>
     <!-- FOOTER -->
 
     <footer>
